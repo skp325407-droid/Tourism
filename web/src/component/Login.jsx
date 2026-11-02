@@ -1,6 +1,5 @@
-// component/Login.jsx
-/*import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -9,58 +8,53 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simple mock auth logic
-    if (email && password) {
-      navigate('/home'); 
-    }
+    // Basic frontend authentication demo: redirect to home
+    navigate('/home'); 
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input type="email" onChange={(e) => setEmail(e.target.value)} required />
-      <input type="password" onChange={(e) => setPassword(e.target.value)} required />
-      <button type="submit">Sign In</button>
-    </form>
-  );
-}*/
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+    <div className="auth-page">
+      <div className="auth-card">
+        <div className="auth-header">
+          <div className="auth-logo">NAMMA OORU <span>TOURISM</span></div>
+          <h2>Welcome Back</h2>
+          <p>Sign in to explore travel destinations across India</p>
+        </div>
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // This handles the redirection
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-field">
+            <label htmlFor="login-email">Email Address</label>
+            <input 
+              id="login-email"
+              type="email" 
+              placeholder="name@example.com" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+            />
+          </div>
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // In a real app, you'd verify the email/password here
-    console.log("Logged in:", email);
-    navigate('/home'); // Redirects to Home page
-  };
+          <div className="auth-field">
+            <label htmlFor="login-password">Password</label>
+            <input 
+              id="login-password"
+              type="password" 
+              placeholder="Enter your password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              required 
+            />
+          </div>
 
-  return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-          required 
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          required 
-        />
-        <button type="submit">Sign In</button>
-      </form>
+          <button type="submit" className="btn-auth-submit">Sign In ➔</button>
+
+          <p className="auth-switch">
+            Don't have an account? <Link to="/register">Create one</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default Login; // Ensure this is exactly like this
+export default Login;

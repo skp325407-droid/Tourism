@@ -1,23 +1,4 @@
-/*import React from 'react' 
-import { Link} from 'react-router-dom'
-  const handleLogout = () => {
-    // Logic to log out goes here
-    navigate('/'); // Send user back to login page
-  };
-const Nav = () => {
-  return (
-    <div>
-        <nav className='navbar'>
-          <div className='logo'>NAMMA OORU</div>
-          <div className='nav-CONTROLS'><Link to="/ReviewForm">< button className='ReviewForm'>Review</button>
-          
-          </Link>
-          </div>
-          </nav>
-    </div>
-  )
-}*/
-/*import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Nav = () => {
@@ -25,87 +6,76 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate('/'); 
+    setIsMenuOpen(false);
+    navigate('/login'); 
   };
 
-  return (
-    <div className='nav-wrapper'>
-      <nav className='navbar'>
-        {}
-        <div className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          ☰
-        </div>
-
-        <div className='logo'>NAMMA OORU</div>
-        
-        <div className='nav-CONTROLS'>
-          <Link to="/ReviewForm">
-            <button className='ReviewForm'>Review</button>
-          </Link>
-        </div>
-      </nav>
-
-      {}
-      <div className={`sidebar-menu ${isMenuOpen ? 'open' : ''}`}>
-        <div className="sidebar-header">
-          <button className="close-btn" onClick={() => setIsMenuOpen(false)}>✕</button>
-        </div>
-        <div className="sidebar-links">
-          <Link to="/home" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/explore" onClick={() => setIsMenuOpen(false)}>Explore</Link>
-          <Link to="/ReviewForm" onClick={() => setIsMenuOpen(false)}>Reviews</Link>
-        </div>
-        <div className="sidebar-footer">
-          <button onClick={handleLogout} className="logout-button">Log Out</button>
-        </div>
-      </div>
-
-      {}
-      {isMenuOpen && <div className="overlay" onClick={() => setIsMenuOpen(false)}></div>}
-    </div>
-  );
-};
-
-export default Nav;*/
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-
-const Nav = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    navigate('/'); 
-  };
+  // Close sidebar on ESC key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
-      <nav className='navbar'>
-        {/* Three-line button stays at the top left */}
-        <div className="menu-icon" onClick={() => setIsMenuOpen(true)}>
-          ☰
-        </div>
-        <div className='logo'>TOURISM</div>
-        <div className='nav-CONTROLS'>
-          <Link to="/ReviewForm">
-            <button className='ReviewForm'>Review</button>
+      <nav className="navbar">
+        <div className="nav-left">
+          <button 
+            type="button"
+            className="menu-icon-btn" 
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open Navigation Menu"
+          >
+            ☰
+          </button>
+          <Link to="/home" className="logo-brand">
+            NAMMA OORU <span>TOURISM</span>
           </Link>
+        </div>
+
+        <div className="nav-links-desktop">
+          <Link to="/home" className="nav-link">Home</Link>
+          <Link to="/explore" className="nav-link">Explore</Link>
+          <Link to="/ReviewForm" className="nav-btn-review">★ Reviews</Link>
         </div>
       </nav>
 
-      {/* Sidebar - This will now slide in from the left */}
+      {/* Slide-in Sidebar Menu */}
       <div className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
-        <button className="close-btn" onClick={() => setIsMenuOpen(false)}>✕</button>
+        <div className="sidebar-header">
+          <span className="sidebar-title">Menu</span>
+          <button 
+            type="button" 
+            className="sidebar-close-btn" 
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Close Navigation Menu"
+          >
+            ✕
+          </button>
+        </div>
+
         <div className="sidebar-links">
-          <Link to="/home" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/explore" onClick={() => setIsMenuOpen(false)}>Explore</Link>
-          <Link to="/ReviewForm" onClick={() => setIsMenuOpen(false)}>Reviews</Link>
-          <button className="logout-btn" onClick={handleLogout}>Log Out</button>
+          <Link to="/home" onClick={() => setIsMenuOpen(false)}>🏠 Home</Link>
+          <Link to="/explore" onClick={() => setIsMenuOpen(false)}>🧭 Explore States</Link>
+          <Link to="/ReviewForm" onClick={() => setIsMenuOpen(false)}>⭐ Traveler Reviews</Link>
+          <hr className="sidebar-divider" />
+          <button type="button" className="sidebar-logout-btn" onClick={handleLogout}>
+            🚪 Log Out
+          </button>
         </div>
       </div>
 
-      {/* Background Dimmer (Overlay) */}
-      {isMenuOpen && <div className="overlay" onClick={() => setIsMenuOpen(false)}></div>}
+      {/* Dimmed Background Overlay */}
+      {isMenuOpen && (
+        <div 
+          className="overlay" 
+          onClick={() => setIsMenuOpen(false)}
+          role="presentation"
+        />
+      )}
     </>
   );
 };

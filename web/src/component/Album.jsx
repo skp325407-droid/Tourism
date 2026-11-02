@@ -1,4 +1,3 @@
-// src/component/Album.jsx
 import React from 'react';
 
 export default function Album({ photos, spotName }) {
@@ -6,12 +5,18 @@ export default function Album({ photos, spotName }) {
   
   return (
     <div className="album-slider-wrapper">
-      {}
-      <h3 className="album-title">{spotName}</h3>
+      <h4 className="album-title">📸 Photo Gallery: {spotName}</h4>
       
       <div className="album-slider">
         {photos.map((img, index) => (
-          <img key={index} src={img} alt={`Slide ${index}`} className="slider-img" />
+          <div key={index} className="album-image-card">
+            <img 
+              src={img} 
+              alt={`${spotName} photo ${index + 1}`} 
+              className="slider-img" 
+              loading="lazy" 
+            />
+          </div>
         ))}
       </div>
     </div>
