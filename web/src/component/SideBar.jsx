@@ -17,7 +17,7 @@ function Nav() {
         <button className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           ☰
         </button>
-        <span className="logo-text">Namma Ooru</span>
+        <span className="logo-text">TOURISM</span>
       </div>
 
       {/* The Sidebar Menu */}

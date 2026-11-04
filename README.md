@@ -1,4 +1,4 @@
-# 🇮🇳 Namma Ooru Tourism Web App
+# 🇮🇳 TOURISM Web App
 
 A clean, responsive full-stack tourism web application built with **React**, **Vite**, **Modern CSS**, **Node.js**, **Express**, and **MongoDB**.
 
@@ -8,6 +8,7 @@ Explore tourist attractions, history, climate, travel seasons, navigation maps, 
 
 ## 🌟 Features
 
+- **User Registration & Login:** Stores user accounts in the MongoDB `test` database (`registers` collection).
 - **28 Indian States:** Comprehensive guides for all states with scenic imagery and curated spots.
 - **Instant Search:** Dynamic filter bar to instantly locate states.
 - **Interactive State Portals:**
@@ -20,7 +21,7 @@ Explore tourist attractions, history, climate, travel seasons, navigation maps, 
   - 📸 Interactive Photo Gallery (Album Slider)
 - **Traveler Reviews System:**
   - Submit ratings (1-5 stars) and comments
-  - Live review list powered by Express REST API and MongoDB
+  - Live review list powered by Express REST API and MongoDB (`reviews` collection in `test` database)
   - Resilient storage fallback ensures zero downtime
 - **Modern Responsive Design:**
   - Pure CSS Grid and Flexbox layouts
@@ -33,7 +34,7 @@ Explore tourist attractions, history, climate, travel seasons, navigation maps, 
 
 - **Frontend:** React 19, Vite, React Router DOM v7, CSS Grid & Flexbox
 - **Backend:** Node.js, Express.js 5, CORS, Mongoose 9
-- **Database:** MongoDB (with resilient in-memory fallback)
+- **Database:** MongoDB `test` database (`registers` & `reviews` collections)
 
 ---
 
@@ -57,6 +58,6 @@ npm run dev
 
 ---
 
-## 📖 Interview Guide
-For full interview preparation, architecture explanations, technical Q&A, and database comparisons, see:
+## 📖 Technical Documentation & Dashboard Walkthrough
+For full technical dashboard explanations and interview preparation, see:
 👉 [INTERVIEW_PREPARATION.md](./INTERVIEW_PREPARATION.md)

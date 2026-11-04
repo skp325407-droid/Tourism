@@ -13,7 +13,7 @@ function Home() {
         <div className="home-hero-overlay">
           <div className="home-hero-content">
             <span className="hero-pill">🇮🇳 Incredible India Tourism</span>
-            <h1>NAMMA OORU TOURISM</h1>
+            <h1>TOURISM</h1>
             <p className="hero-tagline">
               Explore the rich cultural heritage, majestic monuments, scenic hill stations, and vibrant traditions across all 28 Indian States.
             </p>
@@ -61,7 +61,7 @@ function Home() {
 
       {/* Footer */}
       <footer className="main-footer">
-        <p>© 2026 Namma Ooru Tourism App. Crafted for Indian Heritage & Travel Exploration.</p>
+        <p>© 2026 Tourism App. Crafted for Indian Heritage & Travel Exploration.</p>
       </footer>
     </div>
   );

@@ -32,7 +32,7 @@ const Nav = () => {
             ☰
           </button>
           <Link to="/home" className="logo-brand">
-            NAMMA OORU <span>TOURISM</span>
+            TOURISM
           </Link>
         </div>
 
